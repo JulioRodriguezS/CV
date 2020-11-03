@@ -1,4 +1,4 @@
-window.addEventListener("load", () => {
+
 
   console.log("we are ready...")
 
