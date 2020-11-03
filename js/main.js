@@ -26,8 +26,6 @@
 
   //const $recentPersonalDeploys = document.getElementById('recentPersonalDeploys')
 
-})
-
 async function fillWorkExpertise(action, userId, docElement){ 
   
   let jsonData = await getDataFromURL(partURL(action), userId)
