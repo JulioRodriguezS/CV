@@ -2,7 +2,7 @@
 	background-image: url('../img/back.jpg'); 
 	background-position: -31% -3%; 
 	background-repeat: no-repeat; 
-	background-size: 90% 100%;"
+	background-size: 90% 100%;
 }
 .small-text{
 	font-size: .9em;
@@ -12,4 +12,15 @@
 }
 .profession{
 	font-size: 1.5em;		
+}
+.skills{
+	border: 1px solid #adb5bd;
+	border-radius: 5px;
+	background: white;
+	padding: 5px;
+}
+.level-skill{
+	border: 1px solid rgb(80, 200, 255);
+	border-radius: 5px;
+	padding: 5px;
 }
