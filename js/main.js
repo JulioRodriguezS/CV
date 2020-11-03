@@ -58,7 +58,7 @@ async function fillWorkExpertise(action, userId, docElement){
   }  
   docElement.innerHTML = fillingIt
 }
-
+ 
 async function fillPersonalIformation(action, userId, docElement, docElement2){
 
   let jsonData = await getDataFromURL(partURL(action), userId)
