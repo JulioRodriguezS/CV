@@ -71,8 +71,8 @@ async function fillPersonalIformation(action, userId, docElement, docElement2){
   docElement.innerHTML = fillingIt
 
   fillingIt = `
-  <em><b>Cel Phone:</b> ${ jsonData.email } <br>
-      <b>Email:</b> <br> ${ jsonData.email }</em>
+  <em><b>Cel Phone:</b> ${ jsonData.phone } <br>
+      <b>Email:</b> <br> <span>${ jsonData.email }<span></em>
   `
 
   docElement2.innerHTML = fillingIt
@@ -152,72 +152,14 @@ async function fillDegrees(action, userId, docElement){
 let  getDataFromURL = async (partUrl,userId) => {
   const url = partUrl + userId
   //v1
-  // return await $.ajax({
-  //   "dataType": "json",
-  //   "async": true,
-  //   "crossDomain": true,
-  //   "url": url,
-  //   "method": "get",
-  //   "headers": {'Content-Type':'application/json'}
-  // })
-  //v2
-  // const response = await fetch(url, {
-  //   method: 'GET',
-  //   mode: 'cors',
-  //   cache: 'default',
-  //   credentials: 'same-origin', 
-  //   headers: {'Content-Type': 'application/json'},
-  //   redirect: 'follow',
-  //   referrerPolicy: 'no-referrer',     
-  // })
-  // .then(response => {
-  //    const contentType = response.headers.get('content-type');
-  //    if (!contentType || !contentType.includes('application/json')) {
-  //      throw new TypeError("Oops, we haven't got JSON!");
-  //    }
-  //    return response.json();
-  // })
-  // .then(data => {
-  //   console.log('response...',data.json())
-  // })  
-  // return response.json(); 
-  //v3
-  // return await fetch(url, {
-  //   "method": "GET",
-  //   "headers": {
-  //     method: 'GET',
-  //     mode: 'no-cors',
-  //     cache: 'default',
-  //     credentials: 'same-origin', 
-  //     headers: {'Content-Type': 'application/json'},
-  //     redirect: 'follow',
-  //     referrerPolicy: 'no-referrer',
-  //     'Access-Control-Allow-Origin': url
-  //   }
-  // })
-  // .then(response => {
-  //   console.log(response);
-  // })
-  // .catch(err => {
-  //   console.error(err);
-  // });
-  // const data = null;
-
-  // const xhr = new XMLHttpRequest()
-  // xhr.withCredentials = true
-
-  // xhr.addEventListener("readystatechange", function () {
-  //   if (this.readyState === this.DONE) {
-  //     console.log(this.responseText)
-  //   }
-  // })
-
-  // xhr.open("GET", "https://peaceful-taiga-91600.herokuapp.com/work-experience/5f8df6286300ad2691f37641")
-
-  // xhr.send(data)
-  // console.log(data, xhr)
-  //v5
-  return await $.getJSON(url,function(data){return data})
+  return await $.ajax({
+    "dataType": "json",
+    "async": true,
+    "crossDomain": true,
+    "url": url,
+    "method": "get",
+    "headers": {'Content-Type':'application/json'}
+  })  
 }
 let  getLevelAndColorSkill = async (url) => {
   return await $.ajax({
@@ -231,7 +173,10 @@ let  getLevelAndColorSkill = async (url) => {
 }
 
 function partURL(option){
+
   let partURL = 'https://peaceful-taiga-91600.herokuapp.com/'
+  //let partURL = 'http://localhost:3003/'
+
   switch(option){
     case 'skills':
       partURL += 'skills/'
