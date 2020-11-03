@@ -1,5 +1,7 @@
 window.addEventListener("load", () => {
+  
   alert('welcome')
+
   console.log("we are ready...")
 
   const userId = '5f8df6286300ad2691f37641'
