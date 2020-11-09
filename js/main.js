@@ -50,7 +50,9 @@ async function fillWorkExpertise(action, userId, docElement){
           ${ data.description }
           <footer>
             <!--month - year-->
-            ${dates}
+            <b>${dates}</b><br/>
+            <b>Tools:</b> ${data.tools} <br/>
+            <b>Technologies:</b> ${data.technologies}<br/>            
           </footer>
         </blockquote>
       </em>
@@ -138,7 +140,7 @@ async function fillDegrees(action, userId, docElement){
         <blockquote>
         Carreer: ${ data.carrerTitle }
         <footer>
-          ${ dates }
+          <b>${ dates }</b>
         </footer>
         </blockquote>
       </em>								
