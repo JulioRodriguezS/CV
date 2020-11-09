@@ -82,12 +82,13 @@ async function fillPersonalIformation(action, userId, docElement, docElement2){
 
 async function fillSkills(action, userId, docElement){
 
-  let jsonData = await getDataFromURL(partURL(action), userId)
+  let jData = await getDataFromURL(partURL(action), userId)
 
   let fillingIt = ''
 
-  for(data of jsonData){
+  for(data of jData){
       let levelAndColor = await getLevelAndColorSkill(partURL('skillLevel') + data.skillLevel)
+      console.log(data)
       fillingIt += `
       <div class="skills d-inline mb-2 ml-2">
         <span class="text-left font-weight-bold">${ data.title }</span> 
@@ -152,7 +153,7 @@ async function fillDegrees(action, userId, docElement){
 }
 
 let  getDataFromURL = async (partUrl,userId) => {
-  const url = partUrl + userId
+  const url = partUrl + userId  
   //v1
   return await $.ajax({
     "dataType": "json",
