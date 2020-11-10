@@ -66,14 +66,14 @@ async function fillPersonalIformation(action, userId, docElement, docElement2){
 
   let jsonData = await getDataFromURL(partURL(action), userId)
 
-  let fillingIt = `
-					<h4 class="name">${ jsonData.title }</h4>
-          <h5 class="profession">${ jsonData.name + ' ' + jsonData.lastName }</h5>
+  let fillingIt = `					
+          <b>${ jsonData.name + '</br>' + jsonData.lastName }</b></br>
+          -${ jsonData.title }-
     `
   docElement.innerHTML = fillingIt
 
   fillingIt = `
-  <em><b>Cel Phone:</b> ${ jsonData.phone } <br>
+  <em><b>Cel Phone:</b> ${ jsonData.phone } </br>
       <b>Email:</b> <br> <a href="mailto:${ jsonData.email }">${ jsonData.email }<a></em>
   `
 
