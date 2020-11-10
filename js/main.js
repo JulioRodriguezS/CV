@@ -36,7 +36,7 @@ async function fillWorkExpertise(action, userId, docElement){
   
   let fillingIt = ''
 
-  for(data of jsonData){
+  for(let data of jsonData){
    
     let dates = ( data.initialDate !== "undefined" && data.finalDate !== "undefined" )?`[${ monthNames[parseInt(data.initialDate.split('-')[1])] } - ${ data.initialDate.split('-')[0] }]–[${ monthNames[parseInt(data.finalDate.split('-')[1])] } - ${ data.finalDate.split('-')[0] }]`:''
    
@@ -73,8 +73,8 @@ async function fillPersonalIformation(action, userId, docElement, docElement2){
   docElement.innerHTML = fillingIt
 
   fillingIt = `
-  <em><b>Cel Phone:</b> ${ jsonData.phone } </br>
-      <b>Email:</b> <br> <a href="mailto:${ jsonData.email }">${ jsonData.email }<a></em>
+  <em><b><i class="fab fa-whatsapp"></i> Phone:</b> <br><a href="tel:${ jsonData.lada + ' ' + jsonData.phone }">${ jsonData.lada + ' ' + jsonData.phone }</a></br>
+      <b><i class="fas fa-feather-alt"></i> Email:</b> <br> <a href="mailto:${ jsonData.email }">${ jsonData.email }<a></em>
   `
 
   docElement2.innerHTML = fillingIt
@@ -83,15 +83,15 @@ async function fillPersonalIformation(action, userId, docElement, docElement2){
 async function fillSkills(action, userId, docElement){
 
   let jData = await getDataFromURL(partURL(action), userId)
-
+  
   let fillingIt = ''
 
-  for(data of jData){
-      let levelAndColor = await getLevelAndColorSkill(partURL('skillLevel') + data.skillLevel)
-      console.log(data)
+  for(let d of jData){
+      let levelAndColor = await getLevelAndColorSkill(partURL('skillLevel') + d.skillLevel)
+      console.log(d)
       fillingIt += `
       <div class="skills d-inline mb-2 ml-2">
-        <span class="text-left font-weight-bold">${ data.title }</span> 
+        <span class="text-left font-weight-bold">${ d.title }</span> 
         <span class="level-skill small-text font-weight-light font-italic text-${levelAndColor.levelColor}">(${levelAndColor.title})</span>
       </div>
   `}
@@ -104,7 +104,7 @@ async function fillGoals(action, userId, docElement){
   let jsonData = await getDataFromURL(partURL(action), userId)
   
   let fillingIt = ''
-  for(data of jsonData)
+  for(let data of jsonData)
   fillingIt += `
                 <em><b>Profile</b></em> <br>
 								<p>${data.description}</p>`
@@ -115,9 +115,9 @@ async function fillSocialNetworks(action, userId, docElement){
   
   let jsonData = await getDataFromURL(partURL(action), userId)
   let fillingIt = ''
-  for(data of jsonData)
+  for(let data of jsonData)
     fillingIt = `
-      <em>${ data.networkName }: <br>						
+      <em> <i class="${ data.icon }"></i> ${ data.networkName }: <br>						
       <strong><a target="_blank" href="${ data.networkLink }">julio-melquiades-rodriguez-soberano-9097b6145</a></strong></em>
       `
   docElement.innerHTML = fillingIt
@@ -132,7 +132,7 @@ async function fillDegrees(action, userId, docElement){
 
   let fillingIt = ''
 
-  for(data of jsonData){
+  for(let data of jsonData){
     let dates = ( data.initialDate !== "undefined" && data.finalDate !== "undefined" )?`[${ monthNames[parseInt(data.initialDate.split('-')[1])] } - ${ data.initialDate.split('-')[0] }]–[${ monthNames[parseInt(data.finalDate.split('-')[1])] } - ${ data.finalDate.split('-')[0] }]`:''
     fillingIt = `
     <li class="list-group-item">								
