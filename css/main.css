@@ -1,25 +1,47 @@
-.back-document{
-	background-image: url('../img/back.jpg'); 
-	background-position: -31% -3%; 
-	background-repeat: no-repeat; 
-	background-size: 90% 100%;
+.back-document {
+	background: #eae8e7;
 }
-.small-text{
+
+.small-text {
 	font-size: .9em;
 }
-.name{
-	font-size: 2em;	
+
+.aside-blue, .aside-blue a {
+	background: #5da4d9;
+	color: white;
 }
-.profession{
-	font-size: 1.5em;		
+
+.aside-blue a:hover {
+	color: blue;
 }
-.skills{
+.light-text{
+	color: #767270;
+}
+.light-blue{
+	color:#5da4d9;
+}
+.shadow {
+	-webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.33);
+	-moz-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.33);
+	box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.33);
+}
+
+.name {
+	font-size: 2em;
+}
+
+.profession {
+	font-size: 1.5em;
+}
+
+.skills {
 	border: 1px solid #adb5bd;
 	border-radius: 5px;
 	background: white;
 	padding: 5px;
 }
-.level-skill{
+
+.level-skill {
 	border: 1px solid rgb(80, 200, 255);
 	border-radius: 5px;
 	padding: 5px;
