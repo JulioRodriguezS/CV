@@ -214,3 +214,12 @@ function partURL(option){
   }
   return partURL
 }
+
+document.getElementById('printAsPDF').addEventListener('click',(e)=>{
+  e.preventDefault()
+  var printContents = document.getElementById("backDocument").innerHTML;
+  var originalContents = document.body.innerHTML;
+  document.body.innerHTML = printContents;
+  window.print();
+  document.body.innerHTML = originalContents;
+})
