@@ -74,7 +74,7 @@ async function fillPersonalIformation(action, userId, docElement, docElement2){
 
   fillingIt = `
   <em><b>Cel Phone:</b> ${ jsonData.phone } <br>
-      <b>Email:</b> <br> <span>${ jsonData.email }<span></em>
+      <b>Email:</b> <br> <a href="mailto:${ jsonData.email }">${ jsonData.email }<a></em>
   `
 
   docElement2.innerHTML = fillingIt
