@@ -193,7 +193,7 @@ let  getLevelAndColorSkill = async (url) => {
 }
 
 function partURL(option){
-  let isProduction = false
+  let isProduction = true
   let partURL = isProduction ? 'https://peaceful-taiga-91600.herokuapp.com/' : 'http://localhost:3003/'
 
   switch(option){
