@@ -24,7 +24,8 @@ window.addEventListener("load", () => {
   const $listDegrees = document.getElementById('listDegrees')
   fillDegrees('degrees', userId, $listDegrees)
 
-  //const $recentPersonalDeploys = document.getElementById('recentPersonalDeploys')
+  getKpis(userId) 
+
 })
 
 async function fillWorkExpertise(action, userId, docElement){ 
@@ -88,7 +89,7 @@ async function fillSkills(action, userId, docElement){
 
   for(let d of jData){
       let levelAndColor = await getLevelAndColorSkill(partURL('skillLevel') + d.skillLevel)
-      console.log(d)
+      
       fillingIt += `
       <div class="skills d-inline mb-2 ml-2">
         <span class="text-left font-weight-bold">${ d.title }</span> 
@@ -154,7 +155,7 @@ async function fillDegrees(action, userId, docElement){
 
 let  getDataFromURL = async (partUrl,userId) => {
   const url = partUrl + userId  
-  //v1
+
   return await $.ajax({
     "dataType": "json",
     "async": true,
@@ -163,6 +164,22 @@ let  getDataFromURL = async (partUrl,userId) => {
     "method": "get",
     "headers": {'Content-Type':'application/json'}
   })  
+}
+let postDataToDB = async (url, data) => {
+  const stringidata = JSON.stringify(data)
+  console.log('sending...', stringidata)
+  $.ajax({
+    "async": true,
+    "crossDomain": true,
+    "url": url,
+    "method": "post",
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "data": stringidata
+  }).done(function (response) {
+    console.log('response...',response)
+  })
 }
 let  getLevelAndColorSkill = async (url) => {
   return await $.ajax({
@@ -176,9 +193,8 @@ let  getLevelAndColorSkill = async (url) => {
 }
 
 function partURL(option){
-
-  let partURL = 'https://peaceful-taiga-91600.herokuapp.com/'
-  //let partURL = 'http://localhost:3003/'
+  let isProduction = false
+  let partURL = isProduction ? 'https://peaceful-taiga-91600.herokuapp.com/' : 'http://localhost:3003/'
 
   switch(option){
     case 'skills':
@@ -211,6 +227,9 @@ function partURL(option){
     case 'personalDeploys':
       partURL += 'personal-deploys/'
       break
+    case 'kpis':
+      partURL += 'kpis/add/'
+      break
   }
   return partURL
 }
@@ -223,3 +242,52 @@ document.getElementById('printAsPDF').addEventListener('click',(e)=>{
   window.print();
   document.body.innerHTML = originalContents;
 })
+
+let getKpis = async (userId) => {
+
+  let kpis = {}
+  
+  let data = await $.ajax({
+    "dataType": "json",
+    "async": true,
+    "crossDomain": true,
+    "url": 'https://ipapi.co/json/',
+    "method": "get",
+    "headers": {'Content-Type':'application/json'}
+  }) 
+  
+  kpis.userId = userId
+  kpis.ip=data.ip
+  kpis.version=data.version
+  kpis.city=data.city
+  kpis.region=data.region
+  kpis.region_code=data.region_code
+  kpis.country=data.country
+  kpis.country_name=data.country_name
+  kpis.country_code=data.country_code
+  kpis.country_code_iso3=data.country_code_iso3
+  kpis.country_capital=data.country_capital
+  kpis.country_tld=data.country_tld
+  kpis.continent_code=data.continent_code
+  kpis.in_eu=data.in_eu
+  kpis.postal=data.postal
+  kpis.latitude=data.latitude
+  kpis.longitude=data.longitude
+  kpis.timezone=data.timezone
+  kpis.utc_offset=data.utc_offset
+  kpis.country_calling_code=data.country_calling_code
+  kpis.currency=data.currency
+  kpis.currency_name=data.currency_name
+  kpis.languages=data.languages
+  kpis.country_area=data.country_area
+  kpis.country_population=data.country_population
+  kpis.asn=data.asn
+  kpis.org=data.org
+  kpis.Vendor=navigator.vendor
+  kpis.Cookies=navigator.cookieEnabled
+  kpis.Language=navigator.language
+  kpis.Platform=navigator.platform
+  kpis.UserAgent=navigator.userAgent
+  
+  postDataToDB(partURL("kpis"), kpis)
+}
