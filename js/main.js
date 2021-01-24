@@ -75,7 +75,7 @@ async function fillPersonalIformation(action, userId, docElement, docElement2){
 
   fillingIt = `
   <em><b><i class="fab fa-whatsapp"></i> Phone:</b> <br><a href="tel:${ jsonData.lada + ' ' + jsonData.phone }">${ jsonData.lada + ' ' + jsonData.phone }</a></br>
-      <b><i class="fas fa-feather-alt"></i> Email:</b> <br> <a href="mailto:${ jsonData.email }">${ jsonData.email }<a>
+      <b><i class="fas fa-feather-alt"></i> Email:</b> <br> <a href="mailto:${ jsonData.email }">${ jsonData.email }</a></br>
       <b><i class="far fa-address-book"></i> Location:</b> <br> <p>${ jsonData.address }<p>
   </em>
   `
