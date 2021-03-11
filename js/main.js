@@ -41,7 +41,7 @@ async function fillWorkExpertise(action, userId, docElement){
    
     let dates = ( data.initialDate !== "undefined" && data.finalDate !== "undefined" )?`[${ monthNames[parseInt(data.initialDate.split('-')[1])] } - ${ data.initialDate.split('-')[0] }]–[${ monthNames[parseInt(data.finalDate.split('-')[1])] } - ${ data.finalDate.split('-')[0] }]`:''
    
-    fillingIt += `
+    /*fillingIt += `
     <div class="list-group-item">
       <em>
         <strong>Company: ${ data.company }</strong></br>
@@ -54,6 +54,22 @@ async function fillWorkExpertise(action, userId, docElement){
             <b class="light-blue">${dates}</b><br/>
             <b>Tools:</b> ${data.tools} <br/>
             <b>Technologies:</b> ${data.technologies}<br/>            
+          </footer>
+        </blockquote>
+      </em>
+    </div>
+      `*/
+    fillingIt += `
+    <div class="list-group-item">
+      <em>
+        <strong>Company: ${ data.company }</strong></br>
+        <strong>Job title: ${ data.title }</strong></br>
+        <strong>Description</strong>
+        <blockquote>
+          ${ data.description }
+          <footer>
+            <!--month - year-->
+            <b class="light-blue">${dates}</b><br/>
           </footer>
         </blockquote>
       </em>
