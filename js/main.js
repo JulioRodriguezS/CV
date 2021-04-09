@@ -60,7 +60,7 @@ async function fillWorkExpertise(action, userId, docElement){
     </div>
       `
       
-    fillingIt += `
+    /*fillingIt += `
     <div class="list-group-item">
       <em>
         <strong>Company: ${ data.company }</strong></br>
@@ -75,7 +75,7 @@ async function fillWorkExpertise(action, userId, docElement){
         </blockquote>
       </em>
     </div>
-      `
+      `*/
   }  
   docElement.innerHTML = fillingIt
 }
